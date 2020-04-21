@@ -1,3 +1,4 @@
 import React from 'react'
+import Routes from './shared/Routes'
 
-export default () => <div>Github Explorer</div>
+export default () => <Routes />
