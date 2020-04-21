@@ -1,3 +1,8 @@
 import React from 'react'
+import { Title } from './Dashboard.style'
 
-export default () => <h1>Dashboard</h1>
+export default () => (
+  <section>
+    <Title>Explore repositórios no Github</Title>
+  </section>
+)
