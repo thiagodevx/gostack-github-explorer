@@ -32,6 +32,7 @@ const initialStateRepository: RepositoryInterface = {
 interface IssueInterface {
   title: string
   id: string
+  html_url: string
   user: {
     login: string
   }
@@ -80,13 +81,13 @@ export default () => {
       </RepositoryInfo>
       <Issues>
         {issues.map(issue => (
-          <Link to=''>
-            <div key={issue.id}>
+          <a href={issue.html_url} key={issue.id}>
+            <div>
               <strong>{issue.title}</strong>
               <p>{issue.user.login}</p>
             </div>
             <FiChevronRight size={20} />
-          </Link>
+          </a>
         ))}
       </Issues>
     </React.Fragment>
