@@ -57,35 +57,37 @@ export default () => {
       </Header>
       <RepositoryInfo>
         <header>
-          <img src='https://avatars0.githubusercontent.com/u/28929274?v=4' alt='imagem do repositório'></img>
+          <img src={repository.owner.avatar_url} alt={repository.owner.login}></img>
           <div>
-            <strong>rocketseat/unform</strong>
-            <p>descrição do repositório</p>
+            <strong>{repository.full_name}</strong>
+            <p>{repository.description}</p>
           </div>
         </header>
         <ul>
           <li>
-            <strong>1808</strong>
+            <strong>{repository.stargazers_count}</strong>
             <span>Stars</span>
           </li>
           <li>
-            <strong>48</strong>
+            <strong>{repository.forks_count}</strong>
             <span>Forks</span>
           </li>
           <li>
-            <strong>67</strong>
+            <strong>{repository.open_issues_count}</strong>
             <span>Issues abertas</span>
           </li>
         </ul>
       </RepositoryInfo>
       <Issues>
-        <Link to=''>
-          <div>
-            <strong>asassadasdsa</strong>
-            <p>asfsadasd</p>
-          </div>
-          <FiChevronRight size={20} />
-        </Link>
+        {issues.map(issue => (
+          <Link to=''>
+            <div key={issue.id}>
+              <strong>{issue.title}</strong>
+              <p>{issue.user.login}</p>
+            </div>
+            <FiChevronRight size={20} />
+          </Link>
+        ))}
       </Issues>
     </React.Fragment>
   )
