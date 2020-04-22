@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react'
+import React, { useState, FormEvent, useEffect } from 'react'
 import { Title, Form, RepositoriesLinks, Error } from './Dashboard.style'
 import logoImage from '../assets/logo.svg'
 import RepositoryLink from '../repository/RepositoryLink'
@@ -7,9 +7,15 @@ import RepositoryModel from '../repository/Repository.model'
 
 export default () => {
   const [repositoryName, setRepositoryName] = useState('')
-  const [repositories, setRepositories] = useState<RepositoryModel[]>([])
+  const [repositories, setRepositories] = useState<RepositoryModel[]>(() => {
+    const repositories = localStorage.getItem('repositories')
+    return repositories ? JSON.parse(repositories) : []
+  })
   const [inputError, setInputError] = useState('')
 
+  useEffect(() => {
+    localStorage.setItem('repositories', JSON.stringify(repositories))
+  }, [repositories])
   const addRepositoryToList = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!repositoryName) {
@@ -30,7 +36,7 @@ export default () => {
     <section>
       <img src={logoImage} alt='Github Explorer'></img>
       <Title>Explore repositórios no Github</Title>
-      <Form onSubmit={e => addRepositoryToList(e)}>
+      <Form onSubmit={e => addRepositoryToList(e)} hasError={!!inputError}>
         <input
           placeholder='Digite o nome do repositório'
           value={repositoryName}

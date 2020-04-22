@@ -1,3 +1,10 @@
 import React from 'react'
+import { useRouteMatch } from 'react-router-dom'
 
-export default () => <h1>Repository</h1>
+interface RepositoryParams {
+  repositoryName: string
+}
+export default () => {
+  const { params } = useRouteMatch<RepositoryParams>()
+  return <h1>Repository: {params.repositoryName} </h1>
+}
