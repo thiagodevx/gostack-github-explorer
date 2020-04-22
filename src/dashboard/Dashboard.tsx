@@ -1,6 +1,7 @@
 import React from 'react'
 import { Title, Form, RepositoriesLinks } from './Dashboard.style'
 import logoImage from '../assets/logo.svg'
+import RepositoryLink from '../repository/RepositoryLink'
 
 export default () => (
   <section>
@@ -11,16 +12,9 @@ export default () => (
       <button type='submit'>Pesquisar</button>
     </Form>
     <RepositoriesLinks>
-      <a href='teste'>
-        <img
-          src='https://avatars1.githubusercontent.com/u/59992056?s=460&u=ea4ba7b4460a1b6fe0b27b9b31273f464e6cb990&v=4'
-          alt='thiagodevx'
-        ></img>
-        <div>
-          <strong>rocketseat/unform</strong>
-          <p>Easy peasy highly scalable ReactJS & React Native Forms!</p>
-        </div>
-      </a>
+      <RepositoryLink></RepositoryLink>
+      <RepositoryLink></RepositoryLink>
+      <RepositoryLink></RepositoryLink>
     </RepositoriesLinks>
   </section>
 )
